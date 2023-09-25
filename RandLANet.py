@@ -23,7 +23,7 @@ class Network:
         # Path of the result folder
         if self.config.saving:
             if self.config.saving_path is None:
-                self.saving_path = time.strftime('results/Log_%Y-%m-%d_%H-%M-%S', time.gmtime())
+                self.saving_path = time.strftime('content/drive/My Drive/results/Log_%Y-%m-%d_%H-%M-%S', time.gmtime())
             else:
                 self.saving_path = self.config.saving_path
             makedirs(self.saving_path) if not exists(self.saving_path) else None
@@ -48,7 +48,7 @@ class Network:
             self.accuracy = 0
             self.mIou_list = [0]
             self.class_weights = DP.get_class_weights(dataset.name)
-            self.Log_file = open('log_train_' + dataset.name + str(dataset.val_split) + '.txt', 'a')
+            self.Log_file = open('content/drive/My Drive/log_train_' + dataset.name + str(dataset.val_split) + '.txt', 'a')
 
         with tf.variable_scope('layers'):
             self.logits = self.inference(self.inputs, self.is_training)
@@ -172,7 +172,7 @@ class Network:
                 m_iou = self.evaluate(dataset)
                 if m_iou > np.max(self.mIou_list):
                     # Save the best model
-                    snapshot_directory = join(self.saving_path, 'snapshots')
+                    snapshot_directory = join(self.saving_path, 'content/drive/My Drive/snapshots')
                     makedirs(snapshot_directory) if not exists(snapshot_directory) else None
                     self.saver.save(self.sess, snapshot_directory + '/snap', global_step=self.training_step)
                 self.mIou_list.append(m_iou)
