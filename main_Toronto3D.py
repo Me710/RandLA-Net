@@ -14,12 +14,19 @@ class Toronto3D:
     def __init__(self, mode='train'):
         self.name = 'Toronto3D'
         self.path = 'data/Toronto_3D'
-        self.label_to_names = {0: 'others',
-                               1: 'Wire'}
+        self.label_to_names = {0: 'unclassified',
+                               1: 'Ground',
+                               2: 'Road marking',
+                               3: 'Natural',
+                               4: 'Building',
+                               5: 'Utility line',
+                               6: 'Pole',
+                               7: 'Car',
+                               8: 'Fence'}
         self.num_classes = len(self.label_to_names)
         self.label_values = np.sort([k for k, v in self.label_to_names.items()])
         self.label_to_idx = {l: i for i, l in enumerate(self.label_values)}
-        self.ignored_labels = [] #np.sort([0])
+        self.ignored_labels = np.sort([0])
 
         self.full_pc_folder = join(self.path, 'original_ply')
 

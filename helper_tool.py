@@ -18,21 +18,21 @@ class ConfigToronto3D:
     k_n = 16  # KNN
     num_layers = 5  # Number of layers
     num_points = 65536  # Number of input points
-    num_classes = 2  # Number of valid classes
-    sub_grid_size = 0.1  # preprocess_parameter
+    num_classes = 8  # Number of valid classes
+    sub_grid_size = 0.06  # preprocess_parameter
     use_rgb = False # Use RGB
     use_intensity = False # Use intensity
 
     batch_size = 4  # batch_size during training
     val_batch_size = 14  # batch_size during validation and test
-    train_steps = 50  # Number of steps per epochs
+    train_steps = 500  # Number of steps per epochs
     val_steps = 25  # Number of validation steps per epoch
 
     sub_sampling_ratio = [4, 4, 4, 4, 2]  # sampling ratio of random sampling at each layer
     d_out = [16, 64, 128, 256, 512]  # feature dimension
 
     noise_init = 3.5  # noise initial parameter
-    max_epoch = 5  # maximum epoch during training
+    max_epoch = 100  # maximum epoch during training
     learning_rate = 1e-2  # initial learning rate
     lr_decays = {i: 0.95 for i in range(0, 500)}  # decay rate of learning rate
 
