@@ -26,6 +26,7 @@ for pc_path in [join(original_pc_folder, fname + '.ply') for fname in train_file
 
     pc = read_ply(pc_path)
     labels = pc['scalar_label'].astype(np.uint8)
+    labels = [1 if label == 5 else 0 for label in labels]
     xyz = np.vstack((pc['x'] - UTM_OFFSET[0], pc['y'] - UTM_OFFSET[1], pc['z'] - UTM_OFFSET[2])).T.astype(np.float32)
     color = np.vstack((pc['red'], pc['green'], pc['blue'])).T.astype(np.uint8)
     intensity = pc['scalar_intensity'].astype(np.uint8).reshape(-1,1)
